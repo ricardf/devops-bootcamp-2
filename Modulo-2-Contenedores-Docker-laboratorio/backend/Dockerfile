@@ -7,11 +7,11 @@ RUN dotnet restore
 
 # Copy everything else and build
 COPY ./ ./
-RUN dotnet publish -c Release -o /app/out --no-restore
+RUN dotnet publish -c Release -o /app --no-restore
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:3.1
 WORKDIR /app
-COPY --from=build-env /app/out/ .
+COPY --from=build-env /app/ .
 EXPOSE 80
 ENTRYPOINT ["dotnet", "backend.dll"]
