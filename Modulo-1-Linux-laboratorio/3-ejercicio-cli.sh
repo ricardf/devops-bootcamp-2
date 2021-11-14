@@ -1,7 +1,8 @@
-if [ $# -eq 0 ]
-then
-	text="Que me gusta la bash!!!!"
-else	
+text="Que me gusta la bash!!!!"
+if [ $# -gt 1 ]; then
+    echo "El script como máximo 1 parametro (valor a guardar en el fichero). default: Que me gusta la bash!!!!"
+    exit 1
+elif [ $# -eq 1 ]; then	
 	text=$1
 fi
 DUMMYDIR="foo/dummy"
